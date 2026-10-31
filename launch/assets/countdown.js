@@ -74,28 +74,50 @@
     if (noteEl && note) { noteEl.textContent = note; noteEl.hidden = false; }
     var dust = Dust(el.querySelector(".ln-dust"), { max: 110, density: 11000, mouseTarget: el });
 
-    // v4: full-screen background film. Portrait screens get the 4:5 clip, wide screens the 16:9 one; reduced motion = poster only.
-    var filmBox = el.querySelector(".ln-film"), film = filmBox && filmBox.querySelector("video"), filmWide = null;
-    function playFilm() { if (!film || !film.src) return; try { var p = film.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+    // v4: full-screen background film. Portrait screens get the 4:5 clip, wide screens the 16:9 one; reduced motion keeps the film (only the dust/flare motion is dropped).
+    // v5 (mobile fix): the source is swapped ONLY when the portrait/wide choice really changes (debounced, so the phone address
+    // bar showing/hiding never reloads the clip); play() is retried on loadeddata/canplay, on a short watchdog and on any
+    // touch/tap/scroll (iPhone Low Power Mode / data saver refuse autoplay until a gesture); the poster stays underneath.
+    var filmBox = el.querySelector(".ln-film"), film = filmBox && filmBox.querySelector("video"), filmWide = null, filmStop = false, filmTries = 0, filmDog = 0, filmRz = 0;
+    function playFilm() {
+      if (!film || filmStop || !film.getAttribute("src")) return;
+      if (!film.paused && film.readyState > 2) return;
+      film.muted = true;
+      try { var p = film.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+    }
+    var gestures = ["touchstart", "touchend", "pointerdown", "click", "scroll", "keydown"];
+    function onGesture() { playFilm(); }
+    function gestureOff() { gestures.forEach(function (g) { document.removeEventListener(g, onGesture, true); window.removeEventListener(g, onGesture, true); }); }
     function setFilm() {
       if (!film) return;
       var wide = !(window.matchMedia && window.matchMedia("(max-aspect-ratio: 1/1)").matches);
       if (wide === filmWide) return; filmWide = wide;
       var poster = film.getAttribute(wide ? "data-poster-w" : "data-poster-p");
       if (poster) { filmBox.style.backgroundImage = "url(\"" + poster + "\")"; film.poster = poster; }
-      if (calm) return;
+      if (filmStop) return;   // v5: the slow ambient film plays even with reduced motion (only dust/flare animations are skipped)
+      var src = film.getAttribute(wide ? "data-src-w" : "data-src-p");
+      if (film.getAttribute("src") === src) { playFilm(); return; }
       film.classList.remove("on");
-      film.muted = true; film.defaultMuted = true; film.setAttribute("muted", ""); film.preload = "auto";
-      film.src = film.getAttribute(wide ? "data-src-w" : "data-src-p"); film.load(); playFilm();
+      film.muted = true; film.defaultMuted = true; film.setAttribute("muted", ""); film.setAttribute("playsinline", ""); film.setAttribute("webkit-playsinline", "");
+      film.autoplay = true; film.setAttribute("autoplay", ""); film.preload = "auto";
+      film.setAttribute("src", src); film.load(); playFilm();
     }
+    function onResize() { clearTimeout(filmRz); filmRz = setTimeout(setFilm, 250); }
     if (film) {
-      film.addEventListener("playing", function () { film.classList.add("on"); });
+      film.addEventListener("playing", function () { film.classList.add("on"); gestureOff(); });
+      film.addEventListener("loadeddata", playFilm);
+      film.addEventListener("canplay", playFilm);
       film.addEventListener("error", function () { film.classList.remove("on"); });
       setFilm();
-      window.addEventListener("resize", setFilm);
+      window.addEventListener("resize", onResize);
+      window.addEventListener("orientationchange", onResize);
       document.addEventListener("visibilitychange", function () { if (!document.hidden) playFilm(); });
-      // iOS Low Power Mode can refuse autoplay: start on the first touch instead.
-      el.addEventListener("touchstart", playFilm, { passive: true, once: true });
+      window.addEventListener("pageshow", playFilm);
+      {
+        gestures.forEach(function (g) { document.addEventListener(g, onGesture, { capture: true, passive: true }); });
+        window.addEventListener("scroll", onGesture, { capture: true, passive: true });
+        filmDog = setInterval(function () { if (filmStop || ++filmTries > 20) { clearInterval(filmDog); return; } playFilm(); }, 1500);
+      }
     }
     if (soon) return;                                                // no numbers, no reveal until a date is set
 
@@ -129,9 +151,9 @@
           setTimeout(function () {
             if (window.PSQ_LAUNCH_ONLY) { location.replace("/"); return; }
             el.classList.add("open"); root.classList.add("ln-reveal");
-            if (film) { try { film.pause(); } catch (e) {} }
+            if (film) { filmStop = true; try { film.pause(); } catch (e) {} }
             setTimeout(function () {
-              dust.stop(); window.removeEventListener("resize", setFilm);
+              dust.stop(); window.removeEventListener("resize", onResize); gestureOff(); clearInterval(filmDog);
               if (film) { film.removeAttribute("src"); try { film.load(); } catch (e) {} }
               el.remove(); root.classList.remove("ln-on", "ln-reveal");
               window.PSQ_COUNTDOWN = false;

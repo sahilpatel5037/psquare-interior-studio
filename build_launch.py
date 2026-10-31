@@ -12,9 +12,9 @@ m = re.search(r'(?m)^\s*LAUNCH_AT:\s*(null|"[^"]*")', cfg); LAUNCH = json.loads(
 m = re.search(r'(?m)^\s*LAUNCH_NOTE:\s*("(?:[^"\\]|\\.)*")', cfg); NOTE = json.loads(m.group(1)) if m else ""
 idx = open(SITE + "/index.html", encoding="utf-8").read()
 head = idx[:idx.index("</head>")]
-head = re.sub(r'<link rel="stylesheet"[^>]*>', '<link rel="stylesheet" href="assets/launch.css?v=1">', head)
+head = re.sub(r'<link rel="stylesheet"[^>]*>', '<link rel="stylesheet" href="assets/launch.css?v=2">', head)
 head = re.sub(r'<script src="config.js"></script>\s*<script src="assets/js/countdown.js[^"]*"></script>',
-              '<script>window.PSQ_CONFIG={LAUNCH_AT:%s,LAUNCH_NOTE:%s};window.PSQ_LAUNCH_ONLY=true;</script>\n<script src="assets/countdown.js?v=1"></script>'
+              '<script>window.PSQ_CONFIG={LAUNCH_AT:%s,LAUNCH_NOTE:%s};window.PSQ_LAUNCH_ONLY=true;</script>\n<script src="assets/countdown.js?v=2"></script>'
               % (json.dumps(LAUNCH), json.dumps(NOTE, ensure_ascii=False)), head)
 assert "launch.css" in head and "assets/countdown.js" in head and "config.js" not in head, "index.html head changed: update build_launch.py"
 s = idx.index('<div class="launch" id="launch"'); e = idx.index('<a class="skip"')
