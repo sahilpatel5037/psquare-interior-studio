@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121110"><meta name="robots" content="noindex,nofollow,noarchive"><title>P Square Interior Studio — private preview</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>@font-face{font-family:C;src:url(/assets/fonts/CormorantGaramond-normal-500.woff2) format("woff2")}@font-face{font-family:M;src:url(/assets/fonts/Manrope-normal-400-700.woff2) format("woff2");font-weight:400 700}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100svh;display:grid;place-items:center;background:radial-gradient(110% 80% at 50% 0%,#2A241C,#121110 55%,#0A0908);font:400 15px/1.5 M,system-ui,-apple-system,"Segoe UI",sans-serif;color:#EFE8DD;padding:20px}
+form{width:min(100%,370px);background:rgba(30,28,25,.82);border:1px solid rgba(201,164,101,.28);border-radius:10px;padding:34px 26px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.lg{display:flex;align-items:center;gap:12px;margin:0 0 22px}.lg img{width:48px;height:auto}.lg b{display:block;font:600 1.2rem/1 C,Georgia,serif;letter-spacing:.2em}.lg small{display:block;font:600 .55rem/1 M,sans-serif;letter-spacing:.32em;color:#C9A465;margin-top:6px}
+p.k{font:600 11px/1 M,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#C9A465;margin:0 0 10px}h1{font:500 30px/1.1 C,Georgia,serif;margin:0 0 6px}p.s{color:#A79E91;margin:0 0 22px}
+label{display:block;font-weight:600;font-size:12px;margin:0 0 6px;letter-spacing:.04em}input{width:100%;font:16px M,sans-serif;padding:13px 14px;border:1px solid rgba(239,232,221,.16);border-radius:6px;background:rgba(10,9,8,.6);color:#EFE8DD;margin-bottom:14px}
+input:focus{outline:0;border-color:#C9A465;box-shadow:0 0 0 4px rgba(201,164,101,.16)}button{width:100%;height:50px;border:0;border-radius:999px;background:#C9A465;color:#17140F;font:700 15px M,sans-serif;cursor:pointer}button:hover{background:#E2C48F}
+.err{background:#3a2420;border:1px solid #8b4a3a;color:#F3C2B3;border-radius:8px;padding:10px 12px;font-size:13px;margin-bottom:14px}</style></head>
+<body><form method="POST" action="/login"><div class="lg"><img src="%LOGO%" alt=""><span><b>P SQUARE</b><small>INTERIOR STUDIO</small></span></div><p class="k">Private preview</p><h1>Sign in to view the website</h1><p class="s">This site is not public yet.</p>%ERR%
+<label for="u">Username</label><input id="u" name="u" value="%U%" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+<label for="p">Password</label><input id="p" name="p" type="password" autocomplete="current-password" required>
+<input type="hidden" name="next" value="%NEXT%"><button>Open preview</button></form></body></html>

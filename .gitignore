@@ -1,0 +1,10 @@
+# generated / private / heavy — never commit
+publish/
+qa/
+screenshots/
+media-src/
+backup-*/
+*.log
+__pycache__/
+# secrets live outside the repo (/home/user/tab/state/*-private/config.json)
+config.private.json
