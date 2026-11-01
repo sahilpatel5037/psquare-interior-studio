@@ -1,0 +1,66 @@
+/* P Square — motion layer (applied 1 Nov). Lightweight, no libraries. */
+/* 1 · scroll reveal */
+.fx-r{opacity:0;transform:translate3d(0,34px,0);transition:opacity .9s cubic-bezier(.2,.65,.25,1),transform .9s cubic-bezier(.2,.65,.25,1);transition-delay:var(--fxd,0s);will-change:opacity,transform}
+.fx-r.fx-l{transform:translate3d(-40px,0,0)}.fx-r.fx-rt{transform:translate3d(40px,0,0)}
+.fx-r.fx-in{opacity:1;transform:none}
+.about,.ba{overflow-x:clip}
+@media (max-width:900px){.fx-r.fx-l,.fx-r.fx-rt{transform:translate3d(0,34px,0)}}
+/* 2 · project hover: gentle zoom + warm light */
+.pj img,.pj video{transition:transform 1.1s cubic-bezier(.2,.65,.25,1),opacity .5s}
+.pj:not(.pj-cta):before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .6s;
+ background:radial-gradient(120% 90% at 30% 100%,rgba(226,170,90,.38),rgba(201,164,101,.10) 55%,transparent 75%);mix-blend-mode:soft-light}
+.pj:not(.pj-cta):after{transition:opacity .6s}
+@media (hover:hover){
+ .pj:hover img,.pj:hover video{transform:scale(1.09)}
+ .pj:not(.pj-cta):hover:before{opacity:1}
+ .pj:hover b{color:var(--gold2)}.pj b{transition:color .4s}
+ .pj:not(.pj-cta){transition:box-shadow .6s}.pj:not(.pj-cta):hover{box-shadow:0 18px 40px -18px rgba(201,164,101,.45),0 0 0 1px rgba(226,196,143,.35)}
+}
+/* 3 · hero blueprint line-draw */
+.fx-bp{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
+.fx-bp path,.fx-bp line,.fx-bp rect,.fx-bp circle{fill:none;stroke:var(--gold2);stroke-width:1.1;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;
+ stroke-dasharray:var(--len,1200);stroke-dashoffset:var(--len,1200);animation:fxDraw 2.1s cubic-bezier(.45,.05,.3,1) forwards;animation-delay:var(--fxd,0s)}
+.fx-bp .th{stroke-width:.6;stroke:var(--gold);opacity:.75}
+.fx-bp .wall{stroke-width:1.8}
+.fx-bp{animation:fxBpFade 1.6s ease 2.6s forwards}
+@keyframes fxDraw{to{stroke-dashoffset:0}}
+@keyframes fxBpFade{to{opacity:.5}}
+@keyframes fxBpFadeM{to{opacity:.28}}
+@media (max-width:900px){.fx-bp{animation-name:fxBpFadeM}}
+.fx-js .hero-img{animation:fxImg 1.5s ease .9s both,fxZoom 3.4s cubic-bezier(.2,.65,.25,1) .9s both}
+@keyframes fxImg{from{opacity:0}to{opacity:1}}
+@keyframes fxZoom{from{transform:scale(1.06)}to{transform:none}}
+.fx-js .hero .wrap>*{animation:fxUp .9s cubic-bezier(.2,.65,.25,1) both}
+.fx-js .hero .wrap>*:nth-child(2){animation-delay:.08s}.fx-js .hero .wrap>*:nth-child(3){animation-delay:.16s}.fx-js .hero .wrap>*:nth-child(4){animation-delay:.24s}.fx-js .hero .wrap>*:nth-child(5){animation-delay:.32s}
+@keyframes fxUp{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:none}}
+/* 4 · service icons */
+.sv{position:relative;transition:transform .5s cubic-bezier(.2,.65,.25,1),border-color .5s}
+.sv>div{position:relative}
+.fx-ic{position:absolute;right:22px;top:-30px;width:60px;height:60px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;z-index:2;
+ box-shadow:0 8px 22px -10px rgba(0,0,0,.7);transition:transform .5s cubic-bezier(.2,.65,.25,1),border-color .5s,box-shadow .5s}
+.fx-ic svg{width:32px;height:32px;overflow:visible}
+.fx-ic svg *{fill:none;stroke:var(--gold2);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len,120);stroke-dashoffset:var(--len,120);transition:stroke-dashoffset 1.6s cubic-bezier(.45,.05,.3,1);transition-delay:calc(var(--fxd,0s) + .35s)}
+.sv.fx-in .fx-ic svg *{stroke-dashoffset:0}
+.fx-ic .glow{position:absolute;inset:-1px;border-radius:50%;box-shadow:0 0 0 0 rgba(226,196,143,.0);transition:box-shadow .6s}
+@media (hover:hover){
+ .sv:hover{transform:translate3d(0,-6px,0);border-color:rgba(226,196,143,.3)}
+ .sv:hover .fx-ic{transform:translate3d(0,-4px,0) rotate(-8deg);border-color:var(--gold);box-shadow:0 10px 26px -10px rgba(201,164,101,.6)}
+ .sv:hover .fx-ic svg{animation:fxWobble 1.2s ease-in-out}
+}
+@keyframes fxWobble{0%,100%{transform:none}30%{transform:rotate(7deg) scale(1.06)}60%{transform:rotate(-4deg)}}
+@media (max-width:760px){.fx-ic{width:40px;height:40px;right:12px;top:12px;box-shadow:none}.fx-ic svg{width:22px;height:22px}}
+/* process numbers: thin gold rule draws across */
+.st.fx-r{border-top-color:transparent;position:relative}
+.st.fx-r:before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.45,.05,.3,1);transition-delay:calc(var(--fxd,0s) + .2s)}
+.st.fx-in:before{transform:none}
+/* reduced motion: content simply appears, video still plays */
+@media (prefers-reduced-motion:reduce){
+ .fx-r{transform:none!important;transition:opacity .4s!important;transition-delay:0s!important}
+ .fx-bp{display:none}
+ .fx-js .hero-img{animation:none}
+ .fx-js .hero .wrap>*{animation:none}
+ .fx-ic svg *{stroke-dashoffset:0;transition:none}
+ .pj:hover img,.pj:hover video{transform:scale(1.03)}
+ .sv:hover,.sv:hover .fx-ic{transform:none}.sv:hover .fx-ic svg{animation:none}
+ .st.fx-r:before{transform:none;transition:none}
+}
