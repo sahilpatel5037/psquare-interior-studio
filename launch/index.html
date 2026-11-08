@@ -44,5 +44,17 @@
  <div class="ln-cur ln-ctop" aria-hidden="true"></div>
  <div class="ln-cur ln-cbot" aria-hidden="true"></div>
 </div>
+<audio id="bgm" src="assets/media/bgm.mp3" loop muted autoplay preload="auto" playsinline></audio>
+<script>(function(){var a=document.getElementById("bgm");if(!a)return;var V=.55,done=false;a.loop=true;a.muted=true;
+var ev=["pointerup","touchend","click","mouseup","keydown","wheel","pointerdown"];
+function fade(){var n=0;try{a.volume=0}catch(e){}var k=setInterval(function(){n+=40;try{a.volume=Math.min(V,V*n/1800)}catch(e){}if(n>=1800)clearInterval(k)},40)}
+function finish(){if(done)return;done=true;fade();ev.forEach(function(e){document.removeEventListener(e,unmute,true)})}
+function verify(){setTimeout(function(){if(!a.paused&&!a.muted)finish()},400)}
+function unmute(){if(done)return;a.muted=false;var p;try{p=a.play()}catch(e){}if(p&&p.then)p.then(verify).catch(function(){a.muted=true;var q=a.play();if(q&&q.catch)q.catch(function(){})});else verify()}
+function boot(){var p;try{p=a.play()}catch(e){}if(p&&p.catch)p.catch(function(){})}
+ev.forEach(function(e){document.addEventListener(e,unmute,true)});
+boot();a.addEventListener("canplay",boot);
+document.addEventListener("visibilitychange",function(){if(document.hidden){if(!a.paused)a.pause()}else{var p=a.play();if(p&&p.catch)p.catch(function(){})}});
+})();</script>
 </body>
 </html>
