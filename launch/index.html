@@ -49,5 +49,13 @@
  <div class="ln-cur ln-ctop" aria-hidden="true"></div>
  <div class="ln-cur ln-cbot" aria-hidden="true"></div>
 </div>
+<button id="rp-music" type="button" aria-pressed="false" style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:7px 12px;border:1px solid rgba(232,206,150,.55);border-radius:999px;background:rgba(14,13,11,.72);color:#E8CE96;font:500 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.06em;cursor:pointer;-webkit-tap-highlight-color:transparent">Music off</button>
+<audio id="rp-music-audio" src="assets/music.mp3" loop preload="none"></audio>
+<script>
+(function(){var b=document.getElementById("rp-music"),a=document.getElementById("rp-music-audio");if(!b||!a)return;var on=false;a.muted=true;
+function paint(){b.textContent=on?"Music on":"Music off";b.setAttribute("aria-pressed",on?"true":"false")}
+b.addEventListener("click",function(){on=!on;if(on){a.muted=false;var p=a.play();if(p&&p.catch)p.catch(function(){on=false;a.muted=true;paint()})}else{a.muted=true;a.pause()}paint()});
+paint()})();
+</script>
 </body>
 </html>
