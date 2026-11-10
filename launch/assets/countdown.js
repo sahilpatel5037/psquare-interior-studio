@@ -139,7 +139,7 @@
       set("m", pad(Math.floor(s % 3600 / 60))); set("s", pad(s % 60));
       if (left <= 0 && !done) { done = true; clearInterval(timer); open(); }
     }
-    function open() {
+    function open() { if (!window.LAUNCH_INTRO_START) { setTimeout(open, 100); return; } window.LAUNCH_INTRO_START(); return;
       // zero: logo + tiles flare (1.1 s) -> film to full brightness with "NOW OPEN · P Square Interior Studio" (3.3 s)
       // -> curtains close with a gold seam (1.15 s) -> curtains open on the full site (1.7 s)
       el.classList.add("opening");

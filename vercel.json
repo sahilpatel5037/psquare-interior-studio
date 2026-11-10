@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "echo 'no install: static site'",
-  "buildCommand": "echo 'COUNTDOWN ONLY: Vercel serves launch/ (the full site in site/ is not deployed until launch day)'",
+  "buildCommand": "mkdir -p launch/full && cp -R site/. launch/full/",
   "outputDirectory": "launch",
   "cleanUrls": true,
   "headers": [

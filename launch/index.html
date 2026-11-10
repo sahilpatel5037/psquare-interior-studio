@@ -57,5 +57,44 @@ function paint(){b.textContent=on?"Music on":"Music off";b.setAttribute("aria-pr
 b.addEventListener("click",function(){on=!on;if(on){a.muted=false;var p=a.play();if(p&&p.catch)p.catch(function(){on=false;a.muted=true;paint()})}else{a.muted=true;a.pause()}paint()});
 paint()})();
 </script>
+<script>
+/* Launch sequence (09:00 IST, 14 Nov): the countdown hands over to the intro film on this same address, then the full site opens in place. */
+(function(){
+  var TARGET=Date.parse("2026-11-14T09:00:00+05:30"),SRC="/assets/intro.mp4",SITE="/full/?preview=1";
+  var o=null,v=null,started=false,ended=false;
+  function build(){
+    if(o)return;
+    o=document.createElement("div");
+    o.setAttribute("style","position:fixed;inset:0;z-index:2147483600;background:#0E0D0B;opacity:0;pointer-events:none;transition:opacity .4s");
+    v=document.createElement("video");
+    v.muted=true;v.defaultMuted=true;v.setAttribute("playsinline","");v.setAttribute("webkit-playsinline","");
+    v.preload="auto";v.src=SRC;
+    v.setAttribute("style","position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0E0D0B");
+    v.addEventListener("ended",toSite);v.addEventListener("error",toSite);
+    o.appendChild(v);document.body.appendChild(o);
+  }
+  function toSite(){
+    if(ended||!o)return;ended=true;
+    var f=document.createElement("iframe");
+    f.src=SITE;f.title="Site";
+    f.setAttribute("style","position:absolute;inset:0;width:100%;height:100%;border:0;background:#0E0D0B;opacity:0;transition:opacity .6s");
+    o.appendChild(f);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){f.style.opacity="1";});});
+    setTimeout(function(){try{v.pause();v.removeAttribute("src");v.load();v.remove();}catch(e){}},900);
+  }
+  function start(){
+    if(started)return;started=true;build();
+    var m=document.getElementById("rp-music-audio");if(m){try{m.pause();}catch(e){}}
+    o.style.opacity="1";o.style.pointerEvents="auto";
+    v.muted=false;
+    var p=v.play();
+    if(p&&p.catch)p.catch(function(){v.muted=true;var r=v.play();if(r&&r.catch)r.catch(toSite);});
+    setTimeout(toSite,26000);
+  }
+  function arm(){var left=TARGET-Date.now();if(left<=60000){build();return;}setTimeout(arm,Math.min(left-60000,600000));}
+  arm();
+  window.LAUNCH_INTRO_START=start;
+})();
+</script>
 </body>
 </html>
