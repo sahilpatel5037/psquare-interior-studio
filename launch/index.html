@@ -91,7 +91,7 @@ paint()})();
     if(p&&p.catch)p.catch(function(){v.muted=true;var r=v.play();if(r&&r.catch)r.catch(toSite);});
     setTimeout(toSite,26000);
   }
-  function arm(){var left=TARGET-Date.now();if(left<=60000){build();return;}setTimeout(arm,Math.min(left-60000,600000));}
+  function arm(){var left=TARGET-Date.now();if(left<=0){start();return;}setTimeout(arm,Math.min(left,600000));}
   arm();
   window.LAUNCH_INTRO_START=start;
 })();
