@@ -3,7 +3,7 @@ window.PSQ_CONFIG = {
   // LAUNCH COUNTDOWN (the screen people see at the main address before launch; ?preview=1 always shows the full site).
   // null = "Launching soon — after Diwali" screen with no numbers. To start the countdown, put the date + time (India time) in quotes,
   // e.g. LAUNCH_AT: "2026-11-15T10:00:00+05:30" — numbers count down and at zero the site opens by itself with the reveal.
-  LAUNCH_AT: null,
+  LAUNCH_AT: "2026-11-13T00:00:00+05:30",
   // Line under the countdown. "" hides it.
   LAUNCH_NOTE: "Something beautiful is on its way. See you after Diwali.",
   // Studio phone number (used for Call AND WhatsApp). Leave "" until the real number is known —
