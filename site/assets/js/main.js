@@ -25,7 +25,7 @@ function say(msg){if(!toast)return;toast.textContent=msg;toast.hidden=false;clea
 /* config-driven text + links */
 $$("[data-address]").forEach(function(e){if(C.ADDRESS)e.textContent=C.ADDRESS});
 $$("[data-city]").forEach(function(e){if(C.CITY)e.textContent=C.CITY});
-$$("[data-phone-text]").forEach(function(e){e.textContent=C.PHONE?C.PHONE:"Number coming soon"});
+$("[data-phone-text]").forEach(function(e){e.textContent=contactNumbers.length?contactNumbers.map(function(n){return "+"+n.slice(0,2)+" "+n.slice(2,7)+" "+n.slice(7)}).join(" / "):"Number coming soon"});
 $$("[data-ig]").forEach(function(e){if(C.INSTAGRAM)e.href=C.INSTAGRAM});
 $$("[data-map]").forEach(function(e){if(C.MAP_URL)e.href=C.MAP_URL});
 $$("[data-reviews]").forEach(function(e){if(C.GOOGLE_REVIEWS_URL){e.href=C.GOOGLE_REVIEWS_URL;e.hidden=false}});
