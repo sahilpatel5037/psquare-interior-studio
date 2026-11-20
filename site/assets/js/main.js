@@ -121,7 +121,27 @@ if(tl&&C.TEAM&&C.TEAM.length){
   }).join("");
   var tn=$("#teamnote");if(tn)tn.hidden=!anyPh;
 }
-/* before / after slider */
+
+/* Find Your Style: independent selector, keeps the existing site behaviour intact */
+var styleAnswers={space:"",look:"",priority:""},styleBox=$("#stylebox");
+if(styleBox){
+  $(".choices",styleBox).forEach(function(group){
+    group.addEventListener("click",function(e){
+      var b=e.target.closest("button.choice");if(!b)return;
+      $(".choice",group).forEach(function(x){x.setAttribute("aria-pressed","false")});
+      b.setAttribute("aria-pressed","true");styleAnswers[group.getAttribute("data-key")]=b.textContent.trim();
+      var err=$("#style-error");if(err)err.hidden=true;
+    });
+  });
+  var send=$("#styleSend");
+  if(send)send.addEventListener("click",function(){
+    if(!styleAnswers.space||!styleAnswers.look||!styleAnswers.priority){var err=$("#style-error");if(err)err.hidden=false;return}
+    var msg="Hello P Square Interior Studio, I'd like to discuss my interior project.\\n\\nSpace: "+styleAnswers.space+"\\nPreferred look: "+styleAnswers.look+"\\nPriority: "+styleAnswers.priority+"\\nPlease connect me with Parth Patel / Poonam Patel.";
+    if(waDigits){window.open("https://wa.me/"+waDigits+"?text="+encodeURIComponent(msg),"_blank","noopener")}
+    else{say("WhatsApp contact number is not configured yet. Please use the site-visit form.")}
+  });
+}
+\n/* before / after slider */
 var sl=$("#slider");
 if(sl){
   var h=$(".handle",sl),drag=false;
