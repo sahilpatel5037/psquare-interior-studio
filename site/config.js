@@ -9,8 +9,9 @@ window.PSQ_CONFIG = {
   // Studio phone number (used for Call AND WhatsApp). Leave "" until the real number is known —
   // buttons then show a neutral "number coming soon" state. Example: "+91 98765 43210"
   PHONE: "+91 97231 51622",
+  CONTACT_NUMBERS: ["+91 97231 51622", "+91 95586 26743"],
   // Optional: a different WhatsApp number (digits with country code, e.g. "919876543210"). "" = use PHONE.
-  WHATSAPP: "919558626743",
+  WHATSAPP: "919723151622",
   ADDRESS: "Gandhinagar, Gujarat",          // shown in Contact + footer (placeholder until the full address is known)
   CITY: "Gandhinagar",
   MAP_URL: "https://www.google.com/maps/search/?api=1&query=P+Square+Interior+Studio+Gandhinagar",
