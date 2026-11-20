@@ -5,6 +5,19 @@ var C=window.PSQ_CONFIG||{},d=document,$=function(s,r){return (r||d).querySelect
 var digits=function(s){return String(s||"").replace(/\D/g,"")};
 var phoneDigits=digits(C.PHONE);if(phoneDigits.length===10)phoneDigits="91"+phoneDigits;
 var waDigits=digits(C.WHATSAPP)||phoneDigits;
+var contactNumbers=(Array.isArray(C.CONTACT_NUMBERS)?C.CONTACT_NUMBERS:[C.PHONE]).map(function(n){var v=digits(n);if(v.length===10)v="91"+v;return v}).filter(function(v,i,a){return v.length>=10&&a.indexOf(v)===i}).slice(0,2);
+if(!contactNumbers.length&&phoneDigits)contactNumbers=[phoneDigits];
+var contactDialog=$("#contactChooser");
+function openContactChooser(mode,message){
+  var msg=message||"Hello P Square Interior Studio, I would like to know more about your interior services.";
+  if(!contactNumbers.length){say("Contact numbers are not configured yet.");return}
+  if(!contactDialog||!contactDialog.showModal){var n=contactNumbers[0];window.open(mode==="call"?"tel:+"+n:"https://wa.me/"+n+"?text="+encodeURIComponent(msg),mode==="call"?"_self":"_blank");return}
+  $("[data-contact-options]",contactDialog).forEach(function(g){g.hidden=g.getAttribute("data-contact-options")!==mode});
+  $("[data-contact-link]",contactDialog).forEach(function(a){var i=Number(a.getAttribute("data-contact-index")),n=contactNumbers[i];a.hidden=!n;if(!n)return;a.textContent="+"+n.slice(0,2)+" "+n.slice(2,7)+" "+n.slice(7);a.href=mode==="call"?"tel:+"+n:"https://wa.me/"+n+"?text="+encodeURIComponent(msg);a.target=mode==="wa"?"_blank":"_self";a.rel="noopener"});
+  var hint=$("[data-contact-hint]",contactDialog);if(hint)hint.textContent=mode==="call"?"Choose either number to call.":"Choose which number to message on WhatsApp.";
+  contactDialog.showModal();
+}
+if(contactDialog){var closeContact=$("[data-contact-close]",contactDialog);if(closeContact)closeContact.addEventListener("click",function(){contactDialog.close()});contactDialog.addEventListener("click",function(e){if(e.target===contactDialog)contactDialog.close()})}
 var yr=$("#yr");if(yr)yr.textContent=new Date().getFullYear();
 /* toast */
 var toastT,toast=$("#toast");
@@ -12,17 +25,17 @@ function say(msg){if(!toast)return;toast.textContent=msg;toast.hidden=false;clea
 /* config-driven text + links */
 $$("[data-address]").forEach(function(e){if(C.ADDRESS)e.textContent=C.ADDRESS});
 $$("[data-city]").forEach(function(e){if(C.CITY)e.textContent=C.CITY});
-$$("[data-phone-text]").forEach(function(e){e.textContent=C.PHONE?C.PHONE:"Number coming soon"});
+$("[data-phone-text]").forEach(function(e){e.textContent=contactNumbers.length?contactNumbers.map(function(n){return "+"+n.slice(0,2)+" "+n.slice(2,7)+" "+n.slice(7)}).join(" / "):"Number coming soon"});
 $$("[data-ig]").forEach(function(e){if(C.INSTAGRAM)e.href=C.INSTAGRAM});
 $$("[data-map]").forEach(function(e){if(C.MAP_URL)e.href=C.MAP_URL});
 $$("[data-reviews]").forEach(function(e){if(C.GOOGLE_REVIEWS_URL){e.href=C.GOOGLE_REVIEWS_URL;e.hidden=false}});
-$$("[data-call]").forEach(function(e){
-  if(phoneDigits){e.href="tel:+"+phoneDigits}
+$("[data-call]").forEach(function(e){
+  if(contactNumbers.length){e.href="tel:+"+contactNumbers[0];e.addEventListener("click",function(ev){ev.preventDefault();openContactChooser("call")})}
   else{e.classList.add("is-off");e.setAttribute("aria-label","Studio number coming soon");e.addEventListener("click",function(ev){ev.preventDefault();say("The studio's number will be added soon — please use the site-visit form for now.")})}
 });
-$$("[data-wa]").forEach(function(e){
-  if(waDigits){e.href="https://wa.me/"+waDigits+"?text="+encodeURIComponent("Hello P Square Interior Studio, I'd like to know more about your interior services.");e.target="_blank";e.rel="noopener"}
-  else{e.href="#book";e.addEventListener("click",function(){setTimeout(function(){say("WhatsApp number coming soon — fill the form and we'll show your message.")},400)})}
+$("[data-wa]").forEach(function(e){
+  if(contactNumbers.length){e.href="https://wa.me/"+contactNumbers[0];e.addEventListener("click",function(ev){ev.preventDefault();openContactChooser("wa")})}
+  else{e.href="#book";e.addEventListener("click",function(ev){ev.preventDefault();say("WhatsApp number coming soon — fill the form and we'll show your message.")})}
 });
 /* header: glass on scroll + active section */
 var top=$("#top");
@@ -121,7 +134,27 @@ if(tl&&C.TEAM&&C.TEAM.length){
   }).join("");
   var tn=$("#teamnote");if(tn)tn.hidden=!anyPh;
 }
-/* before / after slider */
+
+/* Find Your Style: independent selector, keeps the existing site behaviour intact */
+var styleAnswers={space:"",look:"",priority:""},styleBox=$("#stylebox");
+if(styleBox){
+  $(".choices",styleBox).forEach(function(group){
+    group.addEventListener("click",function(e){
+      var b=e.target.closest("button.choice");if(!b)return;
+      $(".choice",group).forEach(function(x){x.setAttribute("aria-pressed","false")});
+      b.setAttribute("aria-pressed","true");styleAnswers[group.getAttribute("data-key")]=b.textContent.trim();
+      var err=$("#style-error");if(err)err.hidden=true;
+    });
+  });
+  var send=$("#styleSend");
+  if(send)send.addEventListener("click",function(){
+    if(!styleAnswers.space||!styleAnswers.look||!styleAnswers.priority){var err=$("#style-error");if(err)err.hidden=false;return}
+    var msg="Hello P Square Interior Studio, I'd like to discuss my interior project.\\n\\nSpace: "+styleAnswers.space+"\\nPreferred look: "+styleAnswers.look+"\\nPriority: "+styleAnswers.priority+"\\nPlease connect me with Parth Patel / Poonam Patel.";
+    if(contactNumbers.length){openContactChooser("wa",msg)}
+    else{say("WhatsApp contact number is not configured yet. Please use the site-visit form.")}
+  });
+}
+\n/* before / after slider */
 var sl=$("#slider");
 if(sl){
   var h=$(".handle",sl),drag=false;
@@ -149,7 +182,7 @@ if(form){
     ferr.hidden=true;
     var nice=date?new Date(date+"T00:00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short",year:"numeric"}):"Flexible";
     var msg="Hello P Square Interior Studio, I'd like to book a FREE site visit.\n\nName: "+name+"\nMobile: +91 "+mob+"\nProperty: "+type+"\nArea: "+(area||"—")+"\nPreferred date: "+nice;
-    if(waDigits){window.open("https://wa.me/"+waDigits+"?text="+encodeURIComponent(msg),"_blank","noopener");$("#fprev").hidden=true}
+    if(contactNumbers.length){openContactChooser("wa",msg);$("#fprev").hidden=true}
     else{$("#fmsg").textContent=msg;$("#fprev").hidden=false;$("#fprev").scrollIntoView({block:"nearest",behavior:"smooth"})}
   });
 }
