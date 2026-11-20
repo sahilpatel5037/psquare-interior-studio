@@ -2,8 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "echo 'no install: static site'",
-  "buildCommand": "mkdir -p launch/full && cp -R site/. launch/full/",
-  "outputDirectory": "launch",
+  "outputDirectory": "site",
   "cleanUrls": true,
   "headers": [
     {
