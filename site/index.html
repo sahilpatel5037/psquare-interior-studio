@@ -22,7 +22,7 @@
  <div class="wrap">
   <a class="logo" href="#home" aria-label="P Square Interior Studio — home"><img class="markimg" src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="46" height="45" alt=""><span class="wm"><b>P SQUARE</b><small>INTERIOR STUDIO</small></span></a>
   <nav class="nav" aria-label="Main">
-   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
   </nav>
   <a class="btn btn--sm top-cta" href="#book">Book a Free Site Visit</a>
   <div class="mob">
@@ -142,6 +142,25 @@
  </div>
 </section>
 
+<section class="alt" id="find-style">
+ <div class="wrap">
+  <div class="head"><div><p class="eyebrow">Find your style</p><h2>Let's shape your <em>space</em>.</h2></div><p>Tell us what you have in mind. Choose one option in each step and send your preferences to our studio on WhatsApp.</p></div>
+  <div class="stylebox" id="stylebox">
+   <div class="question"><h3>01 · What space are you planning?</h3><div class="choices" data-key="space">
+    <button class="choice" type="button" aria-pressed="false">Living room</button><button class="choice" type="button" aria-pressed="false">Bedroom</button><button class="choice" type="button" aria-pressed="false">Full home</button><button class="choice" type="button" aria-pressed="false">Office / Commercial</button><button class="choice" type="button" aria-pressed="false">Modular kitchen</button>
+   </div></div>
+   <div class="question"><h3>02 · Which look do you prefer?</h3><div class="choices" data-key="look">
+    <button class="choice" type="button" aria-pressed="false">Modern</button><button class="choice" type="button" aria-pressed="false">Minimal</button><button class="choice" type="button" aria-pressed="false">Luxury</button><button class="choice" type="button" aria-pressed="false">Traditional</button><button class="choice" type="button" aria-pressed="false">Contemporary</button>
+   </div></div>
+   <div class="question"><h3>03 · What matters most?</h3><div class="choices" data-key="priority">
+    <button class="choice" type="button" aria-pressed="false">Budget friendly</button><button class="choice" type="button" aria-pressed="false">Storage</button><button class="choice" type="button" aria-pressed="false">Premium finishes</button><button class="choice" type="button" aria-pressed="false">Complete turnkey</button>
+   </div></div>
+   <p class="style-error" id="style-error" role="alert" hidden>Please choose one option in each step.</p>
+   <button class="btn btn--wa" type="button" id="styleSend">Send my preferences on WhatsApp</button>
+  </div>
+ </div>
+</section>
+
 <section id="team">
  <div class="wrap">
   <div class="head"><div><p class="eyebrow">Our team</p><h2>The people behind <em>P&nbsp;Square</em></h2></div><p>The people who take every project from the first sketch to the final handover. Team profiles are coming soon.</p></div>
@@ -152,18 +171,6 @@
    <li class="tm tm--ph"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Name <span>— coming soon</span></h3><p>Role — coming soon</p></li>
   </ul>
   <p class="team-note" id="teamnote">Placeholder cards — names, roles and photos will be added soon.</p>
- </div>
-</section>
-
-<section class="alt" id="reviews">
- <div class="wrap">
-  <div class="head"><div><p class="eyebrow">Google reviews</p><h2>What clients <em>say</em></h2></div><p>Live Google reviews will be shown here once the studio's Google profile is linked.</p></div>
-  <div class="rv">
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Residential project · sample</small></span></div></div>
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Turnkey project · sample</small></span></div></div>
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Commercial project · sample</small></span></div></div>
-  </div>
-  <div class="gbar"><span><b>Google</b>Rating &amp; review count will be linked from the studio's Google profile.</span><a class="btn btn--ghost" data-reviews href="#" target="_blank" rel="noopener" hidden>Read All Reviews</a></div>
  </div>
 </section>
 
@@ -232,7 +239,7 @@
  <div class="wrap">
   <div class="fg">
    <div><a class="logo" href="#home"><img class="markimg" src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="46" height="45" alt=""><span class="wm"><b>P SQUARE</b><small>INTERIOR STUDIO</small></span></a><p>Premium interior design &amp; turnkey solutions — homes, offices and commercial spaces in Gandhinagar &amp; Ahmedabad.</p></div>
-   <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#process">Process</a></li><li><a href="#team">Our Team</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#studio">Our Studio</a></li></ul></div>
+   <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#process">Process</a></li><li><a href="#team">Our Team</a></li><li><a href="#studio">Our Studio</a></li></ul></div>
    <div><h4>Services</h4><ul><li>Residential</li><li>Commercial</li><li>Turnkey</li><li>Modular Kitchen</li><li>3D Design</li></ul></div>
    <div><h4>Contact</h4><ul><li data-address>Gandhinagar, Gujarat</li><li data-phone-text>Number coming soon</li><li><a data-ig href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
   </div>
