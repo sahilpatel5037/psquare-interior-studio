@@ -64,3 +64,15 @@
  .sv:hover,.sv:hover .fx-ic{transform:none}.sv:hover .fx-ic svg{animation:none}
  .st.fx-r:before{transform:none;transition:none}
 }
+
+
+/* Find Your Style — scoped additions using the existing black/gold visual system */
+#stylebox{max-width:900px;margin:34px auto 0;padding:clamp(18px,3vw,30px);background:rgba(20,18,16,.82);border:1px solid rgba(201,164,101,.28)}
+#stylebox .question{margin:0 0 24px}
+#stylebox .question h3{margin:0 0 12px;color:#e4c990;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+#stylebox .choices{display:flex;flex-wrap:wrap;gap:9px}
+#stylebox .choice{border:1px solid rgba(228,201,144,.32);background:#211e1a;color:#f2eadf;border-radius:99px;padding:10px 15px;font:inherit;font-size:12px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+#stylebox .choice[aria-pressed="true"]{background:#c9a465;color:#17120a;border-color:#c9a465}
+#stylebox .choice:focus-visible,#styleSend:focus-visible{outline:2px solid #e4c990;outline-offset:3px}
+#stylebox .style-error{color:#f0b7a8;margin:0 0 12px;font-size:13px}
+@media(prefers-reduced-motion:reduce){#stylebox .choice{transition:none}}
