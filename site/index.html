@@ -13,16 +13,48 @@
 <link rel="preload" href="assets/fonts/Manrope-normal-400-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/fx.css?v=3">
+<link rel="stylesheet" href="assets/css/fx3d.css?v=3d1">
+<link rel="stylesheet" href="assets/css/contacts.css?v=c5">
+<link rel="stylesheet" href="assets/css/extras.css?v=e1">
 <script>document.documentElement.classList.add("fx-js");</script>
 <script src="config.js"></script>
+<script src="assets/js/countdown.js?v=5"></script>
 </head>
 <body>
+<div class="launch" id="launch" role="dialog" aria-modal="true" aria-labelledby="ln-title" hidden>
+ <div class="ln-film" aria-hidden="true"><video muted playsinline webkit-playsinline loop preload="none" disablepictureinpicture disableremoteplayback data-src-p="assets/media/psq-bg-p.mp4?v=5" data-src-w="assets/media/psq-bg-w.mp4?v=5" data-poster-p="assets/img/psq-bg-p.jpg?v=5" data-poster-w="assets/img/psq-bg-w.jpg?v=5"></video></div>
+ <div class="ln-veil" aria-hidden="true"></div>
+ <canvas class="ln-dust" aria-hidden="true"></canvas>
+ <div class="ln-glow" aria-hidden="true"></div>
+ <div class="ln-in">
+  <img class="ln-logo" src="assets/img/logo-192.png" alt="" width="192" height="189">
+  <p class="ln-brand"><b>P SQUARE</b><small>INTERIOR STUDIO</small></p>
+  <p class="ln-title" id="ln-title">Our new website is <em>almost here.</em></p>
+  <p class="ln-sub ln-num">The doors open in</p>
+  <div class="ln-timer ln-num" role="timer" aria-live="off">
+   <div class="ln-u"><span class="ln-v" data-u="d">00</span><span class="ln-l">Days</span></div>
+   <span class="ln-sep" aria-hidden="true">:</span>
+   <div class="ln-u"><span class="ln-v" data-u="h">00</span><span class="ln-l">Hours</span></div>
+   <span class="ln-sep" aria-hidden="true">:</span>
+   <div class="ln-u"><span class="ln-v" data-u="m">00</span><span class="ln-l">Minutes</span></div>
+   <span class="ln-sep" aria-hidden="true">:</span>
+   <div class="ln-u"><span class="ln-v" data-u="s">00</span><span class="ln-l">Seconds</span></div>
+  </div>
+  <p class="ln-date ln-num" id="ln-date"></p>
+  <div class="ln-soonbox" aria-hidden="false"><span class="ln-rule"></span><p class="ln-soontxt">Launching soon <i>&mdash;</i> after Diwali</p><span class="ln-rule"></span></div>
+  <p class="ln-note" id="ln-note" hidden></p>
+  <p class="ln-foot">Interior Design &middot; Turnkey &middot; Gandhinagar</p>
+ </div>
+ <div class="ln-rt" aria-hidden="true"><span class="ln-rt-e">Now open</span><span class="ln-rt-h">P Square <em>Interior Studio</em></span><span class="ln-rt-l"></span></div>
+ <div class="ln-cur ln-ctop" aria-hidden="true"></div>
+ <div class="ln-cur ln-cbot" aria-hidden="true"></div>
+</div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" id="top">
  <div class="wrap">
   <a class="logo" href="#home" aria-label="P Square Interior Studio — home"><img class="markimg" src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="46" height="45" alt=""><span class="wm"><b>P SQUARE</b><small>INTERIOR STUDIO</small></span></a>
   <nav class="nav" aria-label="Main">
-   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
   </nav>
   <a class="btn btn--sm top-cta" href="#book">Book a Free Site Visit</a>
   <div class="mob">
@@ -35,7 +67,7 @@
 <div class="menu" id="menu" hidden>
  <div class="menu-in">
   <nav aria-label="Mobile">
-   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Our Team</a><a href="#reviews">Reviews</a><a href="#studio">Our Studio</a><a href="#contact">Contact</a>
+   <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#team">Our Team</a><a href="#studio">Our Studio</a><a href="#contact">Contact</a>
   </nav>
   <div class="menu-ctas">
    <a class="btn" href="#book">Book a FREE Site Visit</a>
@@ -47,7 +79,7 @@
 
 <main id="main">
 <section class="hero" id="home">
- <img class="hero-img" src="assets/img/hero.jpg" srcset="assets/img/hero-sm.jpg 640w, assets/img/hero.jpg 1280w" sizes="100vw" alt="Living and dining interior designed by P Square" width="1280" height="720" fetchpriority="high">
+ <img class="hero-img" src="assets/img/hero.jpg" srcset="assets/img/hero-sm.jpg 640w, assets/img/hero.jpg 1280w" sizes="100vw" alt="Living and dining interior designed by P Square" width="1280" height="720" fetchpriority="high"><img class="hero-img hero-rot" src="assets/img/hero-r1.jpg" srcset="assets/img/hero-r1-sm.jpg 640w, assets/img/hero-r1.jpg 1280w" sizes="100vw" alt="Interior designed by P Square" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true"><img class="hero-img hero-rot" src="assets/img/hero-r2.jpg" srcset="assets/img/hero-r2-sm.jpg 640w, assets/img/hero-r2.jpg 1280w" sizes="100vw" alt="Interior designed by P Square" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true"><img class="hero-img hero-rot" src="assets/img/hero-r3.jpg" srcset="assets/img/hero-r3-sm.jpg 640w, assets/img/hero-r3.jpg 1280w" sizes="100vw" alt="Interior designed by P Square" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true"><img class="hero-img hero-rot" src="assets/img/hero-r4.jpg" srcset="assets/img/hero-r4-sm.jpg 640w, assets/img/hero-r4.jpg 1280w" sizes="100vw" alt="Interior designed by P Square" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true">
  <div class="wrap">
   <p class="eyebrow"><span>Interior Design &amp; Turnkey Execution <span class="nw">· Gandhinagar</span></span></p>
   <h1>Spaces designed <em>around</em> the way you live.</h1>
@@ -59,7 +91,7 @@
 
 <section class="about" id="about">
  <div class="wrap">
-  <div class="pic"><img src="assets/img/cta.jpg" srcset="assets/img/cta-sm.jpg 640w, assets/img/cta.jpg 1280w" sizes="(max-width:760px) 100vw, 50vw" alt="A finished living space by P Square" loading="lazy" decoding="async"><div class="badge"><b>9+ Years</b>of designing spaces</div></div>
+  <div class="pic"><img src="assets/img/cta.jpg" srcset="assets/img/cta-sm.jpg 640w, assets/img/cta.jpg 1280w" sizes="(max-width:760px) 100vw, 50vw" alt="A finished living space by P Square" loading="lazy" decoding="async"><video class="abvid" src="assets/media/about-team.mp4?v=a1" poster="assets/img/about-team.jpg" autoplay muted loop playsinline preload="auto" aria-label="Meet the team behind P Square"></video><button type="button" class="abmute" aria-label="Turn sound on">&#128263;</button><div class="badge"><b>9+ Years</b>of designing spaces</div></div>
   <div>
    <p class="eyebrow">About the studio</p>
    <h2>Thoughtful design, <em>honest</em> execution.</h2>
@@ -90,16 +122,17 @@
    <button type="button" class="chip on" data-filter="all" aria-pressed="true">All</button><button type="button" class="chip" data-filter="residential" aria-pressed="false">Residential</button><button type="button" class="chip" data-filter="commercial" aria-pressed="false">Commercial</button><button type="button" class="chip" data-filter="turnkey" aria-pressed="false">Turnkey</button>
   </div>
   <div class="grid" id="grid">
-  <button type="button" class="pj pv" data-cat="residential turnkey" data-video="assets/media/pr01.mp4?v=3" data-full="assets/img/pr01.jpg?v=3" data-title="3 BHK Home, Completed" data-label="Residential · Turnkey" data-desc="A complete 3 BHK home, from living room to bedrooms"><img src="assets/img/pr01.jpg?v=3" alt="Video of a completed 3 BHK home interior" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential · Turnkey</small><b>3 BHK Home, Completed</b></span></button>
-  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr02.mp4?v=3" data-full="assets/img/pr02.jpg?v=3" data-title="Elegance in Every Corner" data-label="Residential" data-desc="Living room, bedroom and kitchen detailing"><img src="assets/img/pr02.jpg?v=3" alt="Video of a living room, bedroom and kitchen" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Elegance in Every Corner</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pf02.mp4?v=f1" data-preview="assets/media/pr02.mp4?v=3" data-full="assets/img/pr02.jpg?v=3" data-title="Elegance in Every Corner" data-label="Residential" data-desc="Living room, bedroom and kitchen detailing"><img src="assets/img/pr02.jpg?v=3" alt="Video of a living room, bedroom and kitchen" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Elegance in Every Corner</b></span></button>
+  <button type="button" class="pj pv" data-cat="turnkey" data-video="assets/media/pf07.mp4?v=f1" data-preview="assets/media/pr07.mp4?v=1" data-full="assets/img/pr07.jpg" data-title="On Site, Work in Progress" data-label="Turnkey" data-desc="Site execution, stage by stage"><img src="assets/img/pr07.jpg" alt="Video of interior work in progress on site" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Turnkey</small><b>On Site, Work in Progress</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential turnkey" data-video="assets/media/pf01.mp4?v=f1" data-preview="assets/media/pr01.mp4?v=3" data-full="assets/img/pr01.jpg?v=3" data-title="3 BHK Home, Completed" data-label="Residential · Turnkey" data-desc="A complete 3 BHK home, from living room to bedrooms"><img src="assets/img/pr01.jpg?v=3" alt="Video of a completed 3 BHK home interior" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential · Turnkey</small><b>3 BHK Home, Completed</b></span></button>
+  <button type="button" class="pj pv" data-cat="turnkey residential" data-video="assets/media/pf11.mp4?v=f1" data-preview="assets/media/pr11.mp4?v=3" data-full="assets/img/pr11.jpg?v=3" data-title="From Site Work to Finished Home" data-label="Turnkey" data-desc="Bare site to finished home, executed by our team"><img src="assets/img/pr11.jpg?v=3" alt="Video from site work to a finished home" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Turnkey</small><b>From Site Work to Finished Home</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pf04.mp4?v=f1" data-preview="assets/media/pr04.mp4?v=3" data-full="assets/img/pr04.jpg?v=3" data-title="Dining, Kitchen &amp; Bedroom" data-label="Residential" data-desc="Open dining, modular kitchen and bedroom"><img src="assets/img/pr04.jpg?v=3" alt="Video of a dining area, kitchen and bedroom" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Dining, Kitchen &amp; Bedroom</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pf03.mp4?v=f1" data-preview="assets/media/pr03.mp4?v=3" data-full="assets/img/pr03.jpg?v=3" data-title="Arched Feature Wall" data-label="Residential" data-desc="Living and dining with an arched wall and backlit niche"><img src="assets/img/pr03.jpg?v=3" alt="Video of a living and dining space with an arched wall" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Arched Feature Wall</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pf12.mp4?v=f1" data-full="assets/img/pf12.jpg?v=f1" data-title="From Sketch to 3D Render" data-label="Design · 3D" data-desc="A hand sketch becomes a finished 3D render"><img src="assets/img/pf12.jpg?v=f1" alt="Sketch turning into a 3D render" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Design · 3D</small><b>From Sketch to 3D Render</b></span></button>
+  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pf06.mp4?v=f1" data-preview="assets/media/pr06.mp4?v=1" data-full="assets/img/pr06.jpg" data-title="From 3D Concept to Final Render" data-label="Design · 3D" data-desc="How a room is planned in 3D before execution"><img src="assets/img/pr06.jpg" alt="Video of a bedroom going from 3D concept to final render" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Design · 3D</small><b>From 3D Concept to Final Render</b></span></button>
   <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr09.mp4?v=3" data-full="assets/img/pr09.jpg?v=3" data-title="Living Room &amp; Mandir" data-label="Residential" data-desc="Ring-light ceiling and a jaali mandir unit"><img src="assets/img/pr09.jpg?v=3" alt="Video of a living room with a ring-light ceiling" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Living Room &amp; Mandir</b></span></button>
-  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr03.mp4?v=3" data-full="assets/img/pr03.jpg?v=3" data-title="Arched Feature Wall" data-label="Residential" data-desc="Living and dining with an arched wall and backlit niche"><img src="assets/img/pr03.jpg?v=3" alt="Video of a living and dining space with an arched wall" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Arched Feature Wall</b></span></button>
-  <button type="button" class="pj pv" data-cat="turnkey residential" data-video="assets/media/pr11.mp4?v=3" data-full="assets/img/pr11.jpg?v=3" data-title="From Site Work to Finished Home" data-label="Turnkey" data-desc="Bare site to finished home, executed by our team"><img src="assets/img/pr11.jpg?v=3" alt="Video from site work to a finished home" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Turnkey</small><b>From Site Work to Finished Home</b></span></button>
-  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr04.mp4?v=3" data-full="assets/img/pr04.jpg?v=3" data-title="Dining, Kitchen &amp; Bedroom" data-label="Residential" data-desc="Open dining, modular kitchen and bedroom"><img src="assets/img/pr04.jpg?v=3" alt="Video of a dining area, kitchen and bedroom" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Dining, Kitchen &amp; Bedroom</b></span></button>
   <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr10.mp4?v=3" data-full="assets/img/pr10.jpg?v=3" data-title="Bedroom with Arches" data-label="Residential" data-desc="Arched niches, mural wall and a study unit"><img src="assets/img/pr10.jpg?v=3" alt="Video of a green bedroom with arches and a study unit" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Bedroom with Arches</b></span></button>
   <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr05.mp4?v=3" data-full="assets/img/pr05.jpg?v=3" data-title="Bedroom, Light &amp; Detail" data-label="Residential" data-desc="Backlit panels and warm cove lighting"><img src="assets/img/pr05.jpg?v=3" alt="Video of a bedroom with backlit panels" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Bedroom, Light &amp; Detail</b></span></button>
-  <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr06.mp4?v=1" data-full="assets/img/pr06.jpg" data-title="From 3D Concept to Final Render" data-label="Design · 3D" data-desc="How a room is planned in 3D before execution"><img src="assets/img/pr06.jpg" alt="Video of a bedroom going from 3D concept to final render" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Design · 3D</small><b>From 3D Concept to Final Render</b></span></button>
-  <button type="button" class="pj pv" data-cat="turnkey" data-video="assets/media/pr07.mp4?v=1" data-full="assets/img/pr07.jpg" data-title="On Site, Work in Progress" data-label="Turnkey" data-desc="Site execution, stage by stage"><img src="assets/img/pr07.jpg" alt="Video of interior work in progress on site" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Turnkey</small><b>On Site, Work in Progress</b></span></button>
   <button type="button" class="pj pv" data-cat="residential" data-video="assets/media/pr08.mp4?v=1" data-full="assets/img/pr08.jpg" data-title="Bedroom, Ambient Lighting" data-label="Residential" data-desc="Soft profile lighting and a panelled bed wall"><img src="assets/img/pr08.jpg" alt="Video of a bedroom with ambient lighting" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Residential</small><b>Bedroom, Ambient Lighting</b></span></button>
   <button type="button" class="pj pv" data-cat="commercial" data-video="assets/media/office-studio.mp4?v=pro3" data-preview="assets/media/pr12.mp4?v=1" data-lbposter="assets/img/studio-v3.jpg" data-full="assets/img/c_studio.jpg" data-title="Our Own Studio, Gandhinagar" data-label="Commercial" data-desc="Lounge, workstations, conference room and cabin"><img src="assets/img/c_studio.jpg" alt="Walkthrough video of the P Square studio office" loading="lazy" decoding="async"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><i class="pv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i><span><small>Commercial</small><b>Our Own Studio, Gandhinagar</b></span></button>
   <button type="button" class="pj ph" data-cat="turnkey" data-full="assets/img/g_kitchen.jpg" data-title="Open Kitchen &amp; Bar Unit" data-label="Turnkey" data-desc="Photo · open kitchen with a bar counter"><img src="assets/img/g_kitchen.jpg" srcset="assets/img/g_kitchen-sm.jpg 640w, assets/img/g_kitchen.jpg 1280w" sizes="(max-width:640px) 50vw, (max-width:900px) 33vw, 25vw" alt="Open kitchen with a bar counter" loading="lazy" decoding="async"><span><small>Turnkey</small><b>Open Kitchen &amp; Bar Unit</b></span></button>
@@ -130,6 +163,32 @@
  </div>
 </section>
 
+<!-- ===== Walkthrough + Style finder ===== -->
+<section class="walk" id="walk">
+ <div class="wrap">
+  <div class="head"><div><p class="eyebrow">Idea to home</p><h2>Walk through a project, <em>step by step</em></h2></div><p>Scroll to follow one idea from the first sketch to a finished home. These are P&nbsp;Square&rsquo;s own project clips.</p></div>
+  <div class="walk__grid">
+   <div class="walk__stage"><div class="walk__frame"><video id="wvid" muted loop playsinline preload="metadata" poster="assets/img/pf12.jpg"></video><span class="walk__tag" id="wtag">Step 1 &middot; Sketch to 3D</span></div></div>
+   <ol class="walk__steps">
+    <li class="walk__step on" data-src="assets/media/pf12.mp4?v=f1" data-tag="Step 1 · Sketch to 3D"><b>01</b><h3>Sketch to 3D</h3><p>Ideas become a 3D model, so the layout is clear before work starts.</p></li>
+    <li class="walk__step" data-src="assets/media/pf06.mp4?v=f1" data-tag="Step 2 · 3D to final render"><b>02</b><h3>3D concept to final render</h3><p>Materials, colours and lighting are seen on screen first.</p></li>
+    <li class="walk__step" data-src="assets/media/pf11.mp4?v=f1" data-tag="Step 3 · Site work"><b>03</b><h3>Site work</h3><p>The design moves to site and takes shape.</p></li>
+    <li class="walk__step" data-src="assets/media/pf01.mp4?v=f1" data-tag="Step 4 · Finished home"><b>04</b><h3>Finished home</h3><p>A completed 3&nbsp;BHK home, the result of the same journey.</p></li>
+   </ol>
+  </div>
+ </div>
+</section>
+<section class="sf" id="style">
+ <div class="wrap sf__in">
+  <div class="sf__head"><p class="eyebrow">Find your style</p><h2>Three taps. <em>We&rsquo;ll start from you.</em></h2><p>Pick what feels like you. Your answers go to Parth&nbsp;Patel and Poonam&nbsp;Patel on WhatsApp, so the first call is about your home.</p></div>
+  <div class="sf__box">
+   <div class="sf__q" data-q="space"><b>1. Which space?</b><div class="sf__opts"><button type="button">Full home</button><button type="button">Living room</button><button type="button">Bedroom</button><button type="button">Kitchen</button><button type="button">Office / shop</button></div></div>
+   <div class="sf__q" data-q="style"><b>2. Which look do you like?</b><div class="sf__opts"><button type="button" data-d="Clean lines, light colours, hidden storage.">Modern minimal</button><button type="button" data-d="Wood tones, soft lighting, a warm and lived-in feel.">Warm wood</button><button type="button" data-d="Panelling, brass details, a rich and formal feel.">Classic luxe</button><button type="button" data-d="A calm mix of textures, plants and natural light.">Calm natural</button></div></div>
+   <div class="sf__q" data-q="focus"><b>3. What matters most?</b><div class="sf__opts"><button type="button">Storage</button><button type="button">Lighting</button><button type="button">Looks</button><button type="button">Timeline</button><button type="button">Budget control</button></div></div>
+   <div class="sf__res" id="sfres" hidden><p class="sf__line" id="sfline"></p><button class="btn btn--wa" type="button" id="sfgo">Send my answers on WhatsApp</button></div>
+  </div>
+ </div>
+</section>
 <section id="process">
  <div class="wrap">
   <div class="head"><div><p class="eyebrow">How we work</p><h2>Simple 4-step <em>process</em></h2></div><p>No confusion — you know what happens at every stage.</p></div>
@@ -144,26 +203,9 @@
 
 <section id="team">
  <div class="wrap">
-  <div class="head"><div><p class="eyebrow">Our team</p><h2>The people behind <em>P&nbsp;Square</em></h2></div><p>The people who take every project from the first sketch to the final handover. Team profiles are coming soon.</p></div>
-  <ul class="team" id="teamlist">
-   <li class="tm tm--ph"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Name <span>— coming soon</span></h3><p>Role — coming soon</p></li>
-   <li class="tm tm--ph"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Name <span>— coming soon</span></h3><p>Role — coming soon</p></li>
-   <li class="tm tm--ph"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Name <span>— coming soon</span></h3><p>Role — coming soon</p></li>
-   <li class="tm tm--ph"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Name <span>— coming soon</span></h3><p>Role — coming soon</p></li>
-  </ul>
-  <p class="team-note" id="teamnote">Placeholder cards — names, roles and photos will be added soon.</p>
- </div>
-</section>
-
-<section class="alt" id="reviews">
- <div class="wrap">
-  <div class="head"><div><p class="eyebrow">Google reviews</p><h2>What clients <em>say</em></h2></div><p>Live Google reviews will be shown here once the studio's Google profile is linked.</p></div>
-  <div class="rv">
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Residential project · sample</small></span></div></div>
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Turnkey project · sample</small></span></div></div>
-   <div class="rc"><div class="stars" aria-hidden="true">★★★★★</div><p>“Sample review text — a real Google review from a client will appear here.”</p><div class="who"><i>G</i><span>Client review<small>Commercial project · sample</small></span></div></div>
-  </div>
-  <div class="gbar"><span><b>Google</b>Rating &amp; review count will be linked from the studio's Google profile.</span><a class="btn btn--ghost" data-reviews href="#" target="_blank" rel="noopener" hidden>Read All Reviews</a></div>
+  <div class="head"><div><p class="eyebrow">Our team</p><h2>The people behind <em>P&nbsp;Square</em></h2></div><p>The people who take every project from the first sketch to the final handover.</p></div>
+  <ul class="team" id="teamlist"><li class="tm"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Ridham Patel</h3></li><li class="tm"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Neel Patel</h3></li><li class="tm"><div class="av"><img src="assets/img/team-parth.jpg" alt="Parth Patel" loading="lazy" decoding="async"></div><h3>Parth Patel</h3></li><li class="tm"><div class="av"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg></div><h3>Poonam Patel</h3></li></ul>
+  
  </div>
 </section>
 
@@ -181,7 +223,7 @@
    <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Full name" required maxlength="60"></div>
    <div class="f"><label for="f-mob">Mobile</label><input id="f-mob" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="10-digit mobile" required maxlength="14"></div>
    <div class="f"><label for="f-type">Property type</label><select id="f-type" name="type" required><option value="">Select…</option><option>1 BHK</option><option>2 BHK</option><option>3 BHK</option><option>4 BHK</option><option>Bungalow / Villa</option><option>Office</option><option>Shop / Showroom</option><option>Other</option></select></div>
-   <div class="f"><label for="f-area">Area / Locality</label><input id="f-area" name="area" type="text" placeholder="e.g. Sargasan, Kudasan" maxlength="60"></div>
+   <div class="f"><label for="f-bud">Budget</label><select id="f-bud" name="budget" required><option value="">Select…</option><option>&#8377;14 &ndash; 20 lakh</option><option>&#8377;20 &ndash; 30 lakh</option><option>&#8377;30 &ndash; 50 lakh</option><option>&#8377;50 lakh and above</option></select></div> <div class="f"><label for="f-area">Area / Locality</label><input id="f-area" name="area" type="text" placeholder="e.g. Sargasan, Kudasan" maxlength="60"></div>
    <div class="f full"><label for="f-date">Preferred date</label><input id="f-date" name="date" type="date"></div>
    <p class="ferr" id="ferr" role="alert" hidden></p>
    <button class="btn btn--wa" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg><span>Send Request on WhatsApp</span></button>
@@ -232,7 +274,7 @@
  <div class="wrap">
   <div class="fg">
    <div><a class="logo" href="#home"><img class="markimg" src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="46" height="45" alt=""><span class="wm"><b>P SQUARE</b><small>INTERIOR STUDIO</small></span></a><p>Premium interior design &amp; turnkey solutions — homes, offices and commercial spaces in Gandhinagar &amp; Ahmedabad.</p></div>
-   <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#process">Process</a></li><li><a href="#team">Our Team</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#studio">Our Studio</a></li></ul></div>
+   <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#process">Process</a></li><li><a href="#team">Our Team</a></li><li></li><li><a href="#studio">Our Studio</a></li></ul></div>
    <div><h4>Services</h4><ul><li>Residential</li><li>Commercial</li><li>Turnkey</li><li>Modular Kitchen</li><li>3D Design</li></ul></div>
    <div><h4>Contact</h4><ul><li data-address>Gandhinagar, Gujarat</li><li data-phone-text>Number coming soon</li><li><a data-ig href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
   </div>
@@ -249,7 +291,12 @@
  <figure><img id="lbimg" alt=""><video id="lbvid" controls playsinline preload="none" hidden></video><figcaption><small id="lbcat"></small><b id="lbtitle"></b><span id="lbdesc"></span></figcaption></figure>
  <button type="button" class="lb-nav lb-next" aria-label="Next project">›</button>
 </dialog>
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=t3" defer></script>
 <script src="assets/js/fx.js?v=4" defer></script>
+<script src="assets/js/fx3d.js?v=3d1" defer></script>
+<script src="assets/js/contacts.js?v=c4" defer></script>
+<script src="assets/js/abvid.js?v=a1" defer></script>
+<script src="assets/js/extras.js?v=e1" defer></script>
+<nav class="dock" aria-label="Quick contact"><a href="#contact" data-call>Call</a><a href="#book" data-wa>WhatsApp</a><a href="#book" class="dock__main">Book a visit</a></nav>
 </body>
 </html>

@@ -363,3 +363,7 @@ footer{background:#0C0B0A;padding:70px 0 34px;border-top:1px solid var(--line)}
 }
 @media (max-height:700px){.ln-title{margin-top:14px}.ln-sub{margin-top:18px}.ln-date{margin-top:16px}.ln-note{margin-top:10px}.ln-foot{margin-top:18px}.ln-logo{width:60px}}
 @media (prefers-reduced-motion:reduce){.ln-dust{display:none}.launch *{animation-duration:.01ms!important;animation-iteration-count:1!important}.ln-film,.ln-veil,.ln-rt,.ln-in,.ln-cur{transition-duration:.01s!important}}
+
+/* hero auto-rotate */
+.hero .hero-rot{opacity:0;transition:opacity 1.2s ease}
+.hero .hero-rot.on{opacity:1}

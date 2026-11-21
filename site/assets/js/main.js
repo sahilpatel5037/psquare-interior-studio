@@ -115,9 +115,9 @@ if(tl&&C.TEAM&&C.TEAM.length){
   var sil='<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11"/><path d="M12 54c2-11 10-17 20-17s18 6 20 17z"/></svg>';
   var anyPh=false;
   tl.innerHTML=C.TEAM.map(function(m){
-    var nm=(m&&m.name||"").trim(),rl=(m&&m.role||"").trim(),ph=(m&&m.photo||"").trim();if(!nm||!rl)anyPh=true;
+    var nm=(m&&m.name||"").trim(),rl=(m&&m.role||"").trim(),ph=(m&&m.photo||"").trim();if(!nm)anyPh=true;
     return '<li class="tm'+(nm?'':' tm--ph')+'"><div class="av">'+(ph?'<img src="'+esc(ph)+'" alt="'+esc(nm||"Team member")+'" loading="lazy" decoding="async">':sil)+'</div>'+
-      '<h3>'+(nm?esc(nm):'Name <span>— coming soon</span>')+'</h3><p>'+(rl?esc(rl):'Role — coming soon')+'</p></li>';
+      '<h3>'+(nm?esc(nm):'Name <span>— coming soon</span>')+'</h3>'+(rl?'<p>'+esc(rl)+'</p>':(nm?'':'<p>Role — coming soon</p>'))+'</li>';
   }).join("");
   var tn=$("#teamnote");if(tn)tn.hidden=!anyPh;
 }
@@ -138,18 +138,19 @@ if(form){
   var dt=$("#f-date"),now=new Date();now.setMinutes(now.getMinutes()-now.getTimezoneOffset());dt.min=now.toISOString().slice(0,10);
   form.addEventListener("submit",function(e){
     e.preventDefault();
-    var name=form.name.value.trim(),mob=digits(form.mobile.value),type=form.type.value,area=form.area.value.trim(),date=form.date.value;
+    var name=form.name.value.trim(),mob=digits(form.mobile.value),type=form.type.value,area=form.area.value.trim(),date=form.date.value,bud=form.budget.value;
     if(mob.length===12&&mob.indexOf("91")===0)mob=mob.slice(2);
     var errs=[];$$(".bad",form).forEach(function(x){x.classList.remove("bad")});
     if(name.length<2){errs.push("your name");form.name.classList.add("bad")}
     if(!/^[6-9]\d{9}$/.test(mob)){errs.push("a valid 10-digit mobile number");form.mobile.classList.add("bad")}
     if(!type){errs.push("the property type");form.type.classList.add("bad")}
+    if(!bud){errs.push("your budget");form.budget.classList.add("bad")}
     var ferr=$("#ferr");
     if(errs.length){ferr.textContent="Please add "+errs.join(", ")+".";ferr.hidden=false;var b=$(".bad",form);if(b)b.focus();return}
     ferr.hidden=true;
     var nice=date?new Date(date+"T00:00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short",year:"numeric"}):"Flexible";
-    var msg="Hello P Square Interior Studio, I'd like to book a FREE site visit.\n\nName: "+name+"\nMobile: +91 "+mob+"\nProperty: "+type+"\nArea: "+(area||"—")+"\nPreferred date: "+nice;
-    if(waDigits){window.open("https://wa.me/"+waDigits+"?text="+encodeURIComponent(msg),"_blank","noopener");$("#fprev").hidden=true}
+    var msg="Hello P Square Interior Studio, I'd like to book a FREE site visit.\n\nName: "+name+"\nMobile: +91 "+mob+"\nProperty: "+type+"\nBudget: "+bud+"\nArea: "+(area||"—")+"\nPreferred date: "+nice;
+    if(waDigits){window.open("https://wa.me/"+waDigits+"?text="+encodeURIComponent(msg),"_blank","noopener");$("#fprev").hidden=true;if(window.__psqAlso)window.__psqAlso(msg)}
     else{$("#fmsg").textContent=msg;$("#fprev").hidden=false;$("#fprev").scrollIntoView({block:"nearest",behavior:"smooth"})}
   });
 }
@@ -173,3 +174,5 @@ if(v){
   if("IntersectionObserver" in window){var vio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){load();if(!reduce&&v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){})}}else if(!v.paused)v.pause()})},{rootMargin:"300px 0px"});vio.observe(v)}else load();
 }
 })();
+
+(function(){var imgs=[].slice.call(document.querySelectorAll('.hero .hero-img'));if(imgs.length<2)return;var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce)return;var i=0;setInterval(function(){imgs[i].classList.remove('on');i=(i+1)%imgs.length;imgs[i].classList.add('on')},6000);})();

@@ -1,0 +1,17 @@
+.cc-back{position:fixed;inset:0;z-index:400;background:rgba(10,9,8,.72);display:none;align-items:flex-end;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.cc-back.on{display:flex}
+.cc{width:min(440px,100%);background:#1A1816;border:1px solid rgba(201,164,101,.45);border-radius:14px 14px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));animation:ccUp .28s cubic-bezier(.2,.7,.2,1)}
+@media (min-width:600px){.cc-back{align-items:center}.cc{border-radius:14px}}
+@keyframes ccUp{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.cc h4{margin:0 0 14px;font:600 .72rem/1.2 Manrope,system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#D3B27D}
+.cc a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 16px;margin:0 0 10px;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#F6F1EA;text-decoration:none;background:#211F1C}
+.cc a b{font:500 1.2rem/1.1 "Cormorant Garamond",Georgia,serif}.cc a small{display:block;color:#A89F94;font:500 .78rem/1.3 Manrope,system-ui,sans-serif;margin-top:3px}
+.cc a:active,.cc a:hover{border-color:#C9A465}
+.cc .cc-x{display:block;width:100%;margin-top:4px;padding:12px;border:0;background:none;color:#A89F94;font:600 .8rem Manrope,system-ui,sans-serif;cursor:pointer}
+.cc-list{display:block;line-height:1.7}
+.cc-also{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:410;width:min(420px,calc(100% - 24px));background:#1A1816;border:1px solid rgba(201,164,101,.55);border-radius:12px;padding:14px 44px 14px 16px;color:#F6F1EA;font:500 .9rem/1.4 Manrope,system-ui,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.cc-also p{margin:0 0 8px;color:#D3B27D}.cc-also a{display:block;padding:11px 12px;border-radius:8px;background:#C9A465;color:#14110D;text-decoration:none;text-align:center;font-weight:700}
+.cc-also button{position:absolute;top:6px;right:8px;border:0;background:none;color:#A89F94;font-size:1.5rem;line-height:1;cursor:pointer}
+.about .pic .abvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;background:#14110D;z-index:1}
+.about .pic .badge{z-index:3}
+.about .pic .abmute{position:absolute;left:12px;bottom:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,164,101,.7);background:rgba(20,17,13,.65);color:#F6F1EA;font-size:1.15rem;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
