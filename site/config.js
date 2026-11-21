@@ -26,7 +26,7 @@ window.PSQ_CONFIG = {
   TEAM: [
     { name: "Parth Patel", role: "Founder", photo: "assets/img/team-parth.jpg" },
     { name: "Poonam Patel", role: "Co-Founder", photo: "assets/img/team-poonam.jpg" },
-    { name: "Neel Patel", role: "Interior Designer", photo: "assets/img/team-neel.jpg" },
+    { name: "Neel Patel", role: "Interior Designer", photo: "assets/img/team-neel.jpg?v=2" },
     { name: "Ridham Patel", role: "Interior Designer", photo: "assets/img/team-ridham.jpg" }
   ]
 };
