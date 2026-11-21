@@ -17,7 +17,7 @@ window.PSQ_CONFIG = {
   INSTAGRAM: "https://www.instagram.com/p_square_interior_studio/",
   GOOGLE_REVIEWS_URL: "",                   // "" hides the "Read all reviews" button
   // Studio walkthrough loop (always starts muted; a Sound button appears when STUDIO_VIDEO_HAS_SOUND is true) + its poster. Swap both here to change the video.
-  STUDIO_VIDEO: "assets/media/office-studio.mp4?v=pro3",
+  STUDIO_VIDEO: "assets/media/office-studio.mp4?v=pro4",
   STUDIO_POSTER: "assets/img/studio-v3.jpg",
   STUDIO_VIDEO_HAS_SOUND: true,             // true = show the gold Sound on/off button (video still starts muted)
   // OUR TEAM section. One entry per person, shown in this order. Leave name/role "" to show "coming soon";
