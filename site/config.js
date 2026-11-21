@@ -8,12 +8,12 @@ window.PSQ_CONFIG = {
   LAUNCH_NOTE: "Something beautiful is on its way. See you after Diwali.",
   // Studio phone number (used for Call AND WhatsApp). Leave "" until the real number is known —
   // buttons then show a neutral "number coming soon" state. Example: "+91 98765 43210"
-  PHONE: "",
+  PHONE: "+91 97231 51622",
   // Optional: a different WhatsApp number (digits with country code, e.g. "919876543210"). "" = use PHONE.
   WHATSAPP: "",
-  ADDRESS: "Gandhinagar, Gujarat",          // shown in Contact + footer (placeholder until the full address is known)
+  ADDRESS: "K Raheja Rd, Gandhinagar, Gujarat 382426",          // shown in Contact + footer (placeholder until the full address is known)
   CITY: "Gandhinagar",
-  MAP_URL: "https://www.google.com/maps/search/?api=1&query=P+Square+Interior+Studio+Gandhinagar",
+  MAP_URL: "https://maps.app.goo.gl/EPGCdgfmAa5Q4Gja9",
   INSTAGRAM: "https://www.instagram.com/p_square_interior_studio/",
   GOOGLE_REVIEWS_URL: "",                   // "" hides the "Read all reviews" button
   // Studio walkthrough loop (always starts muted; a Sound button appears when STUDIO_VIDEO_HAS_SOUND is true) + its poster. Swap both here to change the video.
@@ -24,9 +24,9 @@ window.PSQ_CONFIG = {
   // photo = a square .jpg (~600x600) copied into site/assets/img/, written as "assets/img/" + its file name; "" = gold silhouette.
   // Example: { name: "Full Name", role: "Their role", photo: "assets/img/" + file name, e.g. the path of team-photo-1.jpg }  (then re-run build_private.py)
   TEAM: [
-    { name: "", role: "", photo: "" },
-    { name: "", role: "", photo: "" },
-    { name: "", role: "", photo: "" },
-    { name: "", role: "", photo: "" }
+    { name: "Parth Patel", role: "Founder", photo: "assets/img/team-parth.jpg" },
+    { name: "Poonam Patel", role: "Co-Founder", photo: "assets/img/team-poonam.jpg" },
+    { name: "Neel Patel", role: "Interior Designer", photo: "assets/img/team-neel.jpg" },
+    { name: "Ridham Patel", role: "Interior Designer", photo: "assets/img/team-ridham.jpg" }
   ]
 };
