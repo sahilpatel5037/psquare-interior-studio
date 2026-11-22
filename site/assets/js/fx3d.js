@@ -16,7 +16,7 @@ var shapes={
  desk:function(r){cuboid(170,12,86,0,-10,0,r);[[-72,34],[72,34]].forEach(function(p){cuboid(10,70,10,p[0],26,p[1],r);cuboid(10,70,10,p[0],26,-p[1],r)});cuboid(44,30,40,40,-34,0,r)},
  house:function(r){cuboid(120,80,120,0,20,0,r);cuboid(140,10,140,0,-26,0,r);cuboid(80,40,80,0,-50,0,r)}
 };
-var map={about:"arch",services:"sofa",projects:"cube",concept:"frame",process:"steps",team:"pillars",reviews:"lamp",studio:"desk",contact:"house"};
+var map={services:"sofa",projects:"cube",concept:"frame",process:"steps",team:"pillars",reviews:"lamp",studio:"desk",contact:"house"};
 var orbs=[];
 Object.keys(map).forEach(function(id){var sec=d.getElementById(id);if(!sec)return;sec.classList.add("p3-sec");
  var o=mk("p3-orb "+(orbs.length%2?"p3-orb--l":"p3-orb--r"));o.setAttribute("aria-hidden","true");var r=mk("p3-s",o);shapes[map[id]](r);sec.insertBefore(o,sec.firstChild);orbs.push({sec:sec,r:r,seed:orbs.length*1.7})});
@@ -24,7 +24,7 @@ var hero=d.getElementById("home");
 if(hero){hero.classList.add("p3-sec","p3-hero");var f=mk("p3-floor",hero);f.setAttribute("aria-hidden","true")}
 var ft=d.querySelector("footer");if(ft){ft.classList.add("p3-sec");var f2=mk("p3-floor");f2.setAttribute("aria-hidden","true");ft.insertBefore(f2,ft.firstChild)}
 var bar=mk("p3-bar",d.body);bar.setAttribute("aria-hidden","true");
-var tilt=[].slice.call(d.querySelectorAll(".sv,.pj,.st,.tm,.rc,#slider,.about .pic"));
+var tilt=[].slice.call(d.querySelectorAll(".sv,.pj,.st,.tm,.rc,#slider"));
 tilt.forEach(function(e){e.classList.add("p3-t");if(e.parentElement)e.parentElement.style.perspective="1300px"});
 if(matchMedia("(hover:hover) and (pointer:fine)").matches){
  [].forEach.call(d.querySelectorAll(".pj,.sv"),function(m){m.classList.add("p3-card-shine");
