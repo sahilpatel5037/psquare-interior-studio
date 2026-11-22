@@ -66,8 +66,8 @@ section{padding:110px 0}.alt{background:var(--bg2)}
 /* about */
 .about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center}
 .about .pic{position:relative;isolation:isolate}.about .pic img{border-radius:6px;aspect-ratio:4/4.3;object-fit:cover;width:100%}
-.about .pic:before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:1px solid var(--line);border-radius:6px;z-index:-1}
-.about .badge{position:absolute;right:-26px;bottom:34px;background:var(--gold);color:#17140F;padding:20px 24px;border-radius:4px;font:600 .74rem/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.about .pic:before{content:"";position:absolute;inset:0;border:1px solid var(--line);border-radius:6px;z-index:2;pointer-events:none}
+.about .badge{position:absolute;z-index:3;right:-26px;bottom:34px;background:var(--gold);color:#17140F;padding:20px 24px;border-radius:4px;font:600 .74rem/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase}
 .about .badge b{display:block;font:500 1.7rem/1 var(--serif);letter-spacing:0;text-transform:none;margin-bottom:6px}
 .about p{color:var(--ink2);font-size:1.05rem}.about h2{margin-bottom:24px}
 .ticks{list-style:none;padding:0;margin:26px 0 34px;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
